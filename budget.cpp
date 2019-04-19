@@ -25,7 +25,7 @@ class [[eosio::contract]] budget : public contract {
         account_index accounts(get_self(), get_first_receiver().value);
         auto iterator = accounts.find(account.value);
         check(iterator != accounts.end(), "Account does not exist");
-	accounts.erase(iterator);
+        accounts.erase(iterator);
       }
 
       [[eosio::action]]
@@ -50,11 +50,11 @@ class [[eosio::contract]] budget : public contract {
 
         transactions.emplace(_self, [&]( auto& row ) {
           row.transaction = transaction;
-	  row.display_name = display_name;
+          row.display_name = display_name;
           row.debit = (int) (debit * 100);
-	  row.recurring = recurring;
-	  row.start = start;
-	  row.repeat = repeat;
+          row.recurring = recurring;
+          row.start = start;
+          row.repeat = repeat;
         });
       }
 
@@ -64,7 +64,7 @@ class [[eosio::contract]] budget : public contract {
         transaction_index transactions(get_self(), get_first_receiver().value);
         auto iterator = transactions.find(transaction.value);
         check(iterator != transactions.end(), "Transaction does not exist");
-	transactions.erase(iterator);
+        transactions.erase(iterator);
       }
 
       [[eosio::action]]
@@ -76,11 +76,11 @@ class [[eosio::contract]] budget : public contract {
 
         transactions.modify(iterator, _self, [&]( auto& row ) {
           row.transaction = transaction;
-	  row.display_name = display_name;
+          row.display_name = display_name;
           row.debit = (int) (debit * 100);
-	  row.recurring = recurring;
-	  row.start = start;
-	  row.repeat = repeat;
+          row.recurring = recurring;
+          row.start = start;
+          row.repeat = repeat;
         });
       }
 
